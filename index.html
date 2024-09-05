@@ -3,15 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logan May - Website</title>
+    <title>Personal Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
-        body {
+        body, html {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            background-color: #000000;
+            color: #ffffff;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background-color: #8a2be2;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
         }
         .container {
             max-width: 1200px;
@@ -19,20 +43,16 @@
             padding: 20px;
         }
         header {
-            background-color: #4a0e4e;
             padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: #ffffff;
-            padding-left: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.8);
         }
         nav {
-            padding-right: 20px;
+            display: flex;
+            justify-content: center;
         }
         nav a {
             color: #ffffff;
@@ -42,46 +62,74 @@
             transition: color 0.3s ease;
         }
         nav a:hover, nav a.active {
-            color: #9b4dca;
+            color: #8a2be2;
         }
         section {
-            margin: 40px 0;
+            margin: 100px 0;
             opacity: 0;
             transform: translateY(20px);
         }
         h2 {
-            color: #9b4dca;
-            border-bottom: 2px solid #9b4dca;
+            color: #8a2be2;
+            border-bottom: 2px solid #8a2be2;
             padding-bottom: 10px;
         }
-        .carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
+        .project-carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
         }
         .project {
-            flex: 0 0 auto;
-            width: 300px;
-            background-color: #2a2a2a;
-            border-radius: 5px;
+            position: absolute;
+            width: 80%;
+            height: 100%;
+            left: 10%;
+            border-radius: 15px;
             padding: 20px;
-            margin-right: 20px;
-            scroll-snap-align: start;
-            transition: transform 0.3s ease;
+            box-sizing: border-box;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            background-color: rgba(138, 43, 226, 0.2);
+            border: 2px solid #8a2be2;
         }
-        .project:hover {
-            transform: scale(1.02);
+        .project.active {
+            opacity: 1;
+        }
+        .project h3 {
+            margin-top: 0;
+            color: #8a2be2;
         }
         .project a {
             display: inline-block;
             margin-top: 10px;
-            color: #9b4dca;
+            color: #8a2be2;
             text-decoration: none;
+            font-weight: bold;
         }
         .project a:hover {
             text-decoration: underline;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3em;
+            color: #8a2be2;
+            cursor: pointer;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .carousel-arrow.left {
+            left: 10px;
+        }
+        .carousel-arrow.right {
+            right: 10px;
         }
         .social-links {
             display: flex;
@@ -90,56 +138,121 @@
         }
         .social-links a {
             margin: 0 10px;
-            color: #9b4dca;
+            color: #8a2be2;
             font-size: 1.5em;
             transition: color 0.3s ease;
         }
         .social-links a:hover {
             color: #ffffff;
         }
+        .placeholder-image {
+            width: 100%;
+            height: 300px;
+            background-color: rgba(138, 43, 226, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 2px solid #8a2be2;
+        }
     </style>
 </head>
 <body>
+    <div class="stars"></div>
     <header>
-        <h1>Logan :3</h1>
         <nav>
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About Me</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Reach Out</a>
+            <a href="#welcome">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Reach Out</a>
         </nav>
     </header>
 
     <div class="container">
         <section id="welcome">
-            <h2>Welcome to My Portfolio</h2>
-            <p>Hello! I'm Logan</p>
+            <h2>Welcome to My Website</h2>
+            <p>Hello! I'm a junior at TCNJ, I'm an active member of the D1 ACHA Hockey Team, and a member of Kappa Sigma Fraternity</Datag></p>
+            <div class="placeholder-image">later image</div>
         </section>
 
-        <section id="featured-projects">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm a software developer with a keen interest in creating fun projects for others.</p>
+            <div class="placeholder-image">pic of me idk</div>
+        </section>
+
+        <section id="projects">
             <h2>Featured Projects</h2>
-            <div class="carousel">
-                <div class="project">
+            <div class="project-carousel">
+                <div class="carousel-arrow left">&lt;</div>
+                <div class="carousel-arrow right">&gt;</div>
+                <div class="project active">
                     <h3>Project 1</h3>
-                    <p>Description.</p>
-                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on github</a>
+                    <p>Description 4 lata</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project">
                     <h3>Project 2</h3>
-                    <p>Description.</p>
-                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on github</a>
+                    <p>Description 4 lata</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project">
                     <h3>Project 3</h3>
-                    <p>Description.</p>
-                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on github</a>
+                    <p>Description 4 lata</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
+                <div class="project">
+                    <h3>Project 4</h3>
+                    <p>Description 4 lata</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
+                </div>
+                <div class="project">
+                    <h3>Project 5</h3>
+                    <p>Description 4 lata</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <p>I specialize in full-stack development, with expertise in:</p>
+            <ul>
+                <li>JavaScript (React, Node.js)</li>
+                <li>Python (Django, Flask)</li>
+                <li>other stuff</li>
+                <li>other stuff</li>
+            </ul>
+            <div class="placeholder-image">image ?</div>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <h3>Wherever I worked</h3>
+            <p>yap</p>
+            <h3>Same thing</h3>
+            <p>yap</p>
+            <div class="placeholder-image">pic of where i worked?></div>
+        </section>
+
+        <section id="contact">
+            <h2>Reach Out</h2>
+            <p>Feel Free to reach out to me!</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/loganmay08/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/bearisgoodcoder" target="_blank">GitHub</a>
+                <a href="#" target="_blank">Other</a>
+                <a href="#" target="_blank">Other</a>
             </div>
         </section>
     </div>
 
     <script>
-        gsap.from("header", {duration: 1, y: -50, opacity: 0, ease: "power3.out"});
+        gsap.registerPlugin(ScrollTrigger);
+
         gsap.utils.toArray("section").forEach(section => {
             gsap.to(section, {
                 scrollTrigger: {
@@ -154,6 +267,57 @@
                 ease: "power3.out"
             });
         });
+
+        // Project carousel functionality
+        const projects = document.querySelectorAll('.project');
+        const leftArrow = document.querySelector('.carousel-arrow.left');
+        const rightArrow = document.querySelector('.carousel-arrow.right');
+        let currentProject = 0;
+
+        function showProject(index) {
+            projects.forEach((project, i) => {
+                if (i === index) {
+                    project.classList.add('active');
+                    project.style.transform = 'translateX(0)';
+                } else {
+                    project.classList.remove('active');
+                    project.style.transform = `translateX(${i < index ? '-100%' : '100%'})`;
+                }
+            });
+        }
+
+        leftArrow.addEventListener('click', () => {
+            currentProject = (currentProject - 1 + projects.length) % projects.length;
+            showProject(currentProject);
+        });
+
+        rightArrow.addEventListener('click', () => {
+            currentProject = (currentProject + 1) % projects.length;
+            showProject(currentProject);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Create twinkling stars
+        const starsContainer = document.querySelector('.stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = `${Math.random() * 3}px`;
+            star.style.height = star.style.width;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            starsContainer.appendChild(star);
+        }
     </script>
 </body>
 </html>
