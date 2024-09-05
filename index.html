@@ -296,22 +296,15 @@
             showProject(currentProject);
         });
 
-        // Smooth scrolling for navigation links with offset for fixed header
+        // Smooth scrolling for navigation links
         document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetSection = document.querySelector(this.getAttribute('href'));
-                const headerOffset = document.querySelector('header').offsetHeight; // Get the height of the header
-                const elementPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
-                const offsetPosition = elementPosition - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-
 
         // Create twinkling stars
         const starsContainer = document.querySelector('.stars');
