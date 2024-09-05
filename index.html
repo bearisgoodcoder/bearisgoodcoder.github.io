@@ -1,1 +1,159 @@
-Hemlo
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #4a0e4e;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffffff;
+            padding-left: 20px;
+        }
+        nav {
+            padding-right: 20px;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+        nav a:hover, nav a.active {
+            color: #9b4dca;
+        }
+        section {
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        h2 {
+            color: #9b4dca;
+            border-bottom: 2px solid #9b4dca;
+            padding-bottom: 10px;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        .project {
+            flex: 0 0 auto;
+            width: 300px;
+            background-color: #2a2a2a;
+            border-radius: 5px;
+            padding: 20px;
+            margin-right: 20px;
+            scroll-snap-align: start;
+            transition: transform 0.3s ease;
+        }
+        .project:hover {
+            transform: scale(1.02);
+        }
+        .project a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #9b4dca;
+            text-decoration: none;
+        }
+        .project a:hover {
+            text-decoration: underline;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-links a {
+            margin: 0 10px;
+            color: #9b4dca;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Name</h1>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About Me</a>
+            <a href="projects.html">Projects</a>
+            <a href="contact.html">Reach Out</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="welcome">
+            <h2>Welcome to My Portfolio</h2>
+            <p>Hello! I'm Logan</p>
+        </section>
+
+        <section id="featured-projects">
+            <h2>Featured Projects</h2>
+            <div class="carousel">
+                <div class="project">
+                    <h3>Project 1</h3>
+                    <p>Description.</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on github</a>
+                </div>
+                <div class="project">
+                    <h3>Project 2</h3>
+                    <p>Description.</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on github</a>
+                </div>
+                <div class="project">
+                    <h3>Project 3</h3>
+                    <p>Description.</p>
+                    <a href="https://github.com/bearisgoodcoder" target="_blank">View on github</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        gsap.from("header", {duration: 1, y: -50, opacity: 0, ease: "power3.out"});
+        gsap.utils.toArray("section").forEach(section => {
+            gsap.to(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "top 50%",
+                    scrub: 1
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>
