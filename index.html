@@ -1,3 +1,16 @@
+To center the `p1` elements in the project section and also center the background information (text) in the "About Me" section, you'll need to modify the CSS accordingly. I'll provide the changes you can make.
+
+### Changes:
+
+1. **Center `p1` elements in the project section:**
+   - To center the `p1` elements inside the `.project-slide`, we can convert them to block elements and apply text alignment.
+
+2. **Center the background section in the "About Me":**
+   - For the "About Me" section, you want to center-align the content inside `.resume-section`. We'll add appropriate centering CSS rules.
+
+### Modified HTML with updated CSS:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,11 +88,32 @@
         .github-link:hover {
             background-color: #333333;
         }
+
+        /* Centering p1 elements */
+        .project-slide p1 {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        /* Centering the background section */
         .resume-section {
             margin-top: 2rem;
             width: 80%;
-            text-align: left;
+            text-align: center; /* Center-align text */
         }
+
+        .resume-section h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-section p {
+            text-align: center; /* Ensure paragraph content is centered */
+            max-width: none;
+        }
+
     </style>
 </head>
 <body>
