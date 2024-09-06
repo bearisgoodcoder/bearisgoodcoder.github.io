@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logan May - Personal Website</title>
+    <title>Personal Website</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <style>
         body, html {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e;
-            color: #e0e0e0;
+            background-color: #000000;
+            color: #ffffff;
             height: 100%;
             overflow-x: hidden;
         }
@@ -27,7 +27,7 @@
         }
         .star {
             position: absolute;
-            background-color: #4b7bec;
+            background-color: #8a2be2;
             border-radius: 50%;
             opacity: 0;
             animation: twinkle 5s infinite;
@@ -48,43 +48,30 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background-color: rgba(26, 26, 46, 0.8);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
         }
         nav {
             display: flex;
-            margin-left: 20px;
+            justify-content: center;
         }
         nav a {
-            color: #e0e0e0;
+            color: #ffffff;
             text-decoration: none;
-            margin-right: 15px;
+            margin: 0 15px;
             font-size: 1.1em;
             transition: color 0.3s ease;
         }
         nav a:hover, nav a.active {
-            color: #4b7bec;
-        }
-        .name {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #4b7bec;
+            color: #8a2be2;
         }
         section {
             margin: 100px 0;
             opacity: 0;
             transform: translateY(20px);
-            min-height: calc(100vh - 200px);
-            display: none;
-        }
-        section.active {
-            display: block;
         }
         h2 {
-            color: #4b7bec;
-            border-bottom: 2px solid #4b7bec;
+            color: #8a2be2;
+            border-bottom: 2px solid #8a2be2;
             padding-bottom: 10px;
         }
         .project-carousel {
@@ -106,20 +93,20 @@
             flex-direction: column;
             justify-content: center;
             opacity: 0;
-            background-color: rgba(75, 123, 236, 0.1);
-            border: 2px solid #4b7bec;
+            background-color: rgba(138, 43, 226, 0.2);
+            border: 2px solid #8a2be2;
         }
         .project.active {
             opacity: 1;
         }
         .project h3 {
             margin-top: 0;
-            color: #4b7bec;
+            color: #8a2be2;
         }
         .project a {
             display: inline-block;
             margin-top: 10px;
-            color: #4b7bec;
+            color: #8a2be2;
             text-decoration: none;
             font-weight: bold;
         }
@@ -131,10 +118,10 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 3em;
-            color: #4b7bec;
+            color: #8a2be2;
             cursor: pointer;
             z-index: 10;
-            background-color: rgba(26, 26, 46, 0.5);
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
             border-radius: 50%;
         }
@@ -151,25 +138,25 @@
         }
         .social-links a {
             margin: 0 10px;
-            color: #4b7bec;
+            color: #8a2be2;
             font-size: 1.5em;
             transition: color 0.3s ease;
         }
         .social-links a:hover {
-            color: #e0e0e0;
+            color: #ffffff;
         }
         .placeholder-image {
             width: 100%;
             height: 300px;
-            background-color: rgba(75, 123, 236, 0.1);
+            background-color: rgba(138, 43, 226, 0.2);
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #e0e0e0;
+            color: #ffffff;
             font-size: 1.5em;
             margin-bottom: 20px;
             border-radius: 15px;
-            border: 2px solid #4b7bec;
+            border: 2px solid #8a2be2;
         }
     </style>
 </head>
@@ -177,38 +164,24 @@
     <div class="stars"></div>
     <header>
         <nav>
-            <a href="#home" class="active">Home</a>
+            <a href="#welcome">Home</a>
             <a href="#about">About Me</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Reach Out</a>
         </nav>
-        <div class="name">Logan May</div>
     </header>
 
     <div class="container">
-        <section id="home" class="active">
+        <section id="welcome">
             <h2>Welcome to My Website</h2>
-            <p>Hello! I'm a junior at TCNJ, I'm an active member of the D1 ACHA Hockey Team, and a member of Kappa Sigma Fraternity</p>
-            <div class="placeholder-image">Your Image Here</div>
+            <p>Hello! I'm a junior at TCNJ, I'm an active member of the D1 ACHA Hockey Team, and a member of Kappa Sigma Fraternity</Datag></p>
+            <div class="placeholder-image">later image</div>
         </section>
 
         <section id="about">
             <h2>About Me</h2>
             <p>I'm a software developer with a keen interest in creating fun projects for others.</p>
-            <div class="placeholder-image">Your Image Here</div>
-            <h3>Skills & Expertise</h3>
-            <p>I specialize in full-stack development, with expertise in:</p>
-            <ul>
-                <li>JavaScript (React, Node.js)</li>
-                <li>Python (Django, Flask)</li>
-                <li>Other skills</li>
-                <li>More skills</li>
-            </ul>
-            <h3>Work Experience</h3>
-            <h4>Company Name</h4>
-            <p>Description of your role and achievements</p>
-            <h4>Another Company</h4>
-            <p>Description of your role and achievements</p>
+            <div class="placeholder-image">pic of me idk</div>
         </section>
 
         <section id="projects">
@@ -218,35 +191,56 @@
                 <div class="carousel-arrow right">&gt;</div>
                 <div class="project active">
                     <h3>Project 1</h3>
-                    <p>Description of Project 1</p>
+                    <p>Description 4 lata</p>
                     <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project">
                     <h3>Project 2</h3>
-                    <p>Description of Project 2</p>
+                    <p>Description 4 lata</p>
                     <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project">
                     <h3>Project 3</h3>
-                    <p>Description of Project 3</p>
+                    <p>Description 4 lata</p>
                     <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project">
                     <h3>Project 4</h3>
-                    <p>Description of Project 4</p>
+                    <p>Description 4 lata</p>
                     <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
                 <div class="project">
                     <h3>Project 5</h3>
-                    <p>Description of Project 5</p>
+                    <p>Description 4 lata</p>
                     <a href="https://github.com/bearisgoodcoder" target="_blank">View on GitHub</a>
                 </div>
             </div>
         </section>
 
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <p>I specialize in full-stack development, with expertise in:</p>
+            <ul>
+                <li>JavaScript (React, Node.js)</li>
+                <li>Python (Django, Flask)</li>
+                <li>other stuff</li>
+                <li>other stuff</li>
+            </ul>
+            <div class="placeholder-image">image ?</div>
+        </section>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <h3>Wherever I worked</h3>
+            <p>yap</p>
+            <h3>Same thing</h3>
+            <p>yap</p>
+            <div class="placeholder-image">pic of where i worked?></div>
+        </section>
+
         <section id="contact">
             <h2>Reach Out</h2>
-            <p>Feel free to reach out to me!</p>
+            <p>Feel Free to reach out to me!</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/loganmay08/" target="_blank">LinkedIn</a>
                 <a href="https://github.com/bearisgoodcoder" target="_blank">GitHub</a>
@@ -302,20 +296,13 @@
             showProject(currentProject);
         });
 
-        // Navigation functionality
-        const navLinks = document.querySelectorAll('nav a');
-        const sections = document.querySelectorAll('section');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                sections.forEach(section => {
-                    section.classList.remove('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-                document.getElementById(targetId).classList.add('active');
-                navLinks.forEach(navLink => navLink.classList.remove('active'));
-                link.classList.add('active');
             });
         });
 
