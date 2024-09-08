@@ -11,19 +11,21 @@
             font-family: 'Courier New', monospace;
             margin: 0;
             padding: 20px;
-            overflow: hidden;
-            cursor: none;
+            overflow-y: scroll; /* Allow scrolling */
+            cursor: url('path/to/xp-cursor.cur'), auto; /* Change cursor to XP cursor */
         }
+
         .tv-screen {
             background-color: #0a0a0a;
             border-radius: 40px;
             padding: 40px;
             width: 90vw;
-            height: 120vh;
+            height: 120vh; /* Increase height to force scrolling */
             margin: 20px auto;
             position: relative;
             overflow: hidden;
         }
+
         .scanline {
             background: linear-gradient(to bottom, 
                 rgba(255,255,255,0), 
@@ -36,23 +38,29 @@
             height: 4px;
             animation: scan 5s linear infinite;
         }
+
         @keyframes scan {
             0% { top: 0; }
             100% { top: 100%; }
         }
+
         h1, h2 {
             color: #0f0;
+            text-align: left; /* Center the headers */
             text-shadow: 2px 2px #0a0, -2px -2px #00f;
         }
+
         .content {
             animation: flicker 0.05s infinite;
             font-size: 1.2em;
         }
+
         @keyframes flicker {
             0% { opacity: 0.8; }
             50% { opacity: 1; }
             100% { opacity: 0.9; }
         }
+
         .channel {
             position: absolute;
             top: 20px;
@@ -60,6 +68,7 @@
             font-size: 1.2em;
             color: #ff0;
         }
+
         .date {
             position: absolute;
             top: 20px;
@@ -67,34 +76,42 @@
             font-size: 1.2em;
             color: #ff0;
         }
+
         .static {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('https://media.giphy.com/media/l1J9u3TZfpmeDLkD2/giphy.gif');
-            background-size: cover;
-            opacity: 0.3;
+            background-image: url('data:image/png;base64,https://gifdb.com/gif/tv-static-rainbow-color-bars-r6fl7exjw36lxgbq.html');
+            opacity: 0.2; /* Make static more intense */
             pointer-events: none;
         }
+
         .custom-cursor {
             width: 40px;
             height: 40px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/0b/Cursor.svg'); /* Windows XP cursor image */
-            background-size: cover;
+            border: 2px solid #fff;
+            border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
         }
+
         .highlight {
-            background: repeating-linear-gradient(
-                45deg,
-                red, orange, yellow, green, blue, indigo, violet,
-                transparent 5px
-            );
-            
+            background-image: linear-gradient(to left, yellow, cyan, green, magenta, red, blue, violet);
+            background-size: 200% 100%;
+            animation: rainbow 2s linear infinite;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
         }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
         .links {
             position: absolute;
             bottom: 20px;
@@ -102,33 +119,49 @@
             right: 0;
             text-align: center;
         }
+
         .links a {
             color: #0f0;
             margin: 0 10px;
             text-decoration: none;
         }
+
         .links a:hover {
             text-decoration: underline;
         }
-        #projects {
+
+        #projects, #skills, #work-experience {
             transition: opacity 0.5s;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
-    <div class="custom-cursor"></div>
     <div class="tv-screen">
         <div class="scanline"></div>
         <div class="static"></div>
-        <div class="channel" id="channel">CHANNEL 00</div>
+        <div class="channel" id="channel">CHANNEL 01</div>
         <div class="date" id="current-date"></div>
         <div class="content">
             <h1>HI! I'M LOGAN</h1>
-            <p>A SOFTWARE ENGINEER BASED IN NEW JERSEY.</p>
-            
+            <p>A SOFTWARE ENGINEER BASED IN NEW JERSEY. HOCKEY PLAYER, CHILLER :3</p>
+
             <h2>PROJECTS</h2>
             <div id="projects"></div>
-            
+
+            <h2>SKILLS</h2>
+            <div id="skills">
+                <p>Front End | HTML, Javascript, CSS</p>
+                <p>Back End  | Java, Python, C++, Solidity</p>
+                <p>Other     | GitHub, Visual Studio Code, Matplotlib, Networkx, Wireshark, Algorithms, Data Structures, Computer Networking, API, React, Tkinter, Computer Architecture, Beautiful Soup, Flask</p>
+            </div>
+
+            <h2>WORK EXPERIENCE</h2>
+            <div id="work-experience">
+                <p>Senior Coaching Staff @ The Ice House, Hackensack NJ (2016-2024)</p>
+                <p></p>
+            </div>
+
             <h2>CONTACT</h2>
             <p>Email: mayl2@tcnj.edu</p>
             <p>GitHub: github.com/bearisgoodcoder</p>
@@ -176,7 +209,7 @@
         setInterval(updateDate, 1000 * 60); // Update every minute
         updateProject();
         setInterval(updateProject, 5000); // Change project every 5 seconds
-
+    
         // Custom cursor
         const cursor = document.querySelector('.custom-cursor');
         document.addEventListener('mousemove', (e) => {
@@ -210,6 +243,7 @@
                 e.target.classList.remove('highlight');
             }
         });
+    
     </script>
 </body>
 </html>
