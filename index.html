@@ -3,181 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logan's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <title>Logan's Personal Channel</title>
     <style>
-        body, html {
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
             margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            height: 100%;
+            padding: 20px;
+            overflow: hidden;
         }
-        nav {
-            position: fixed;
+        .tv-screen {
+            background-color: #0a0a0a;
+            border: 20px solid #333;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.1), rgba(255,255,255,0));
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            background-color: #000000;
-            padding: 1rem;
-            z-index: 1000;
+            height: 2px;
+            animation: scan 5s linear infinite;
         }
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-right: 1rem;
-            font-weight: 300;
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        h1, h2 {
+            color: #0f0;
+            text-shadow: 2px 2px #0a0;
         }
         .content {
-            padding-top: 60px;
-            min-height: calc(100% - 60px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            animation: flicker 0.1s infinite;
         }
-        h1 {
-            font-weight: 700;
-            font-size: 3rem;
+        @keyframes flicker {
+            0% { opacity: 0.9; }
+            100% { opacity: 1; }
         }
-        p {
-            font-weight: 300;
-            max-width: 600px;
+        .channel {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 0.8em;
         }
-        .project-carousel {
-            width: 80%;
-            margin: 2rem auto;
-        }
-        .project-slide {
-            padding: 1rem;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            margin: 0 10px;
-            transition: transform 0.3s ease;
-        }
-        .project-slide:hover {
-            transform: scale(1.05);
-        }
-        .github-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: #000000;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-        .github-link:hover {
-            background-color: #333333;
-        }
-        .resume-section {
-            margin-top: 2rem;
-            width: 80%;
-            text-align: left;
+        .date {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About Me</a>
-        <a href="#projects">Projects</a>
-    </nav>
-
-    <div class="content" id="home">
-        <h1>Welcome to My Portfolio</h1>
-        <h2>Logan May</h2>
-        <p>I'm a passionate developer showcasing my projects and skills.</p>
-    </div>
-
-    <div class="content" id="about" style="display: none;">
-        <h1>About Me</h1>
-        <p>I'm Logan, a sophomore computer science student who is deeply passionate about technology and how it is changing the world. I currently manage my academic goals and my dedication to the Division 1 ACHA hockey team, where I've developed not just my physical abilities but also my capacity for teamwork and performance under stress.
-
-            I work as the Fundraising Chair for Kappa Sigma fraternity outside of the rink and the classroom. In this role, I actively participate in charitable endeavors and promote a feeling of community among my peers.
-
-            My interest in computer science was sparked by my innate curiosity in how technology functions. From analyzing the newest hardware parts to investigating state-of-the-art software innovations.
-
-            I enjoy playing video games a lot and studying the relationship between technology and gaming in addition to my extracurricular and academic interests. I'm constantly interested by the ways that technology improves our gaming experiences, whether I'm exploring the realm of esports or dissecting game mechanics.
-
-            In the end, I want to use my love of technology and my wide range of abilities to advance computer science in significant ways.</p>
-        
-        <div class="resume-section">
-            <h2>My Background</h2>
-            <h3>Education</h3>
-            <p>Bachelor's Degree in Computer Science @ TCNJ 2022-2026</p>
-            <h3>Experience</h3>
-            <p>Senior Hockey Staff @ The Ice House, Hackensack NJ</p>
-            <h3>Skills</h3>
-            <p>Front End | HTML, Javascript, CSS </p>
-            <p>Back End  | Java, Python, C++, Solidity</p>
-            <p>Other     | GitHub, Visual Studio Code, Matplotlib, Networkx, Wireshark, Algorithms, Data Structures, Computer Networking, API, React, Tkinter, Computer Architecture, Beautiful Soup, Flask </p>
+    <div class="tv-screen">
+        <div class="scanline"></div>
+        <div class="channel">CHANNEL 00</div>
+        <div class="date" id="current-date"></div>
+        <div class="content">
+            <h1>HI! I'M LOGAN</h1>
+            <p>A SOFTWARE ENGINEER BASED IN NEW JERSEY.</p>
+            
+            <h2>PROJECTS</h2>
+            <ul>
+                <li>Project 1: Amazon Review Bot Checker</li>
+                <li>Project 2: Deceitful Doors</li>
+                <li>Project 3: Complimentary Colors</li>
+                <li>Project 4: Research</li>
+                <li>Project 5: Personal Website</li>
+            </ul>
+            
+            <h2>CONTACT</h2>
+            <p>Email: mayl2@tcnj.edu</p>
+            <p>GitHub: github.com/bearisgoodcoder</p>
+            <p>LinkedIn: linkedin.com/in/loganmay08</p>
         </div>
     </div>
 
-    <div class="content" id="projects" style="display: none;">
-        <h1>My Projects</h1>
-        <div class="project-carousel">
-            <div class="project-slide">
-                <h3>Complimentary Colors</h3>
-                <p>Project that shows basic knowledge of JavaScript, HTML, CSS that was submitted for Hackdown 2022 on Devpost. Utilized Manifest V3 which is used for Chrome extensions. Winning Submission for Social Justice Category. Allows users to select multiple filters for Chrome and sets to their liking. .</p>
-                <p1>Google Chrome Color Blind Extension (JavaScript | HTML | CSS)</p1>
-                <a href="https://github.com/bearisgoodcoder/Color-Blind-Extension" class="github-link" target="_blank">View on GitHub</a>
-            </div>
-            <div class="project-slide">
-                <h3>Amazon Review Bot Checker</h3>
-                <p>Amazon Web Scraper using selenium and python to check if a review is created by a bot using a natural language toolkit and other characterizations of the users' profile. It scrapes the profiles and all review pages of any amazon product that the user chooses and goes through numerous calculations to see if it is a bot or not</p>
-                <p1>Amazon Bot Review Checker (Python | Selenium Library | CSS)</p1>
-                <a href="https://github.com/bearisgoodcoder/Amazon-Review-Bot-Checker" class="github-link" target="_blank">View on GitHub</a>
-            </div>
-            <div class="project-slide">
-                <h3>Deceitful Doors</h3>
-                <p>Project that shows knowledge and creativity using Java, fully playable in terminal. It has over 40 outcomes for the player, items, different paths based on choice, lives, an overall scoreboard, and colors. It is a strategic adventure game that makes the player make crucial choices. </p>
-                <p1>Text Based Strategy Game (Java)</p1>
-                <a href="https://github.com/bearisgoodcoder/Deceitful-Doors" class="github-link" target="_blank">View on GitHub</a>
-            </div>
-            <div class="project-slide">
-                <h3>Research</h3>
-                <p>Research done with professors which allowed for a more in-depth understanding of many different topics & working in a team environment and deepening the understanding of many prevalent future-based topics</p>
-                <p1>Research for Web3.0 & Ethereum (Solidity | Python, Web3py | Web3.eth API)</p1>
-                <a href="https://github.com/bearisgoodcoder/Web3-4Fun" class="github-link" target="_blank">View on GitHub</a>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
-        $(document).ready(function(){
-            // Initialize the carousel immediately
-            $('.project-carousel').slick({
-                dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                adaptiveHeight: true
-            });
-
-            $('nav a').on('click', function(e){
-                e.preventDefault();
-                var target = $(this).attr('href').substring(1);
-                $('.content').hide();
-                $('#' + target).show();
-                
-                // Reinitialize the carousel when showing the projects section
-                if (target === 'projects') {
-                    $('.project-carousel').slick('setPosition');
-                }
-            });
-
-            // Show the home page by default
-            $('#home').show();
-        });
+        function updateDate() {
+            const now = new Date();
+            const dateString = now.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: '2-digit', 
+                year: 'numeric' 
+            }).toUpperCase();
+            document.getElementById('current-date').textContent = dateString;
+        }
+        updateDate();
+        setInterval(updateDate, 1000 * 60); // Update every minute
     </script>
 </body>
 </html>
